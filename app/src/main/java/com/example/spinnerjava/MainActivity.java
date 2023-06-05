@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spnPaises);
+        ListView listView = (ListView) findViewById(R.id.spnPaises);
         final String[] lista = getResources().getStringArray(R.array.paises);
 
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, lista);
-        spinner.setAdapter(adaptador);
+        listView.setAdapter(adaptador);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainActivity.this, lista[position], Toast.LENGTH_LONG).show();
